@@ -3,6 +3,7 @@
 #include "Settings.hpp"
 #include <QApplication>
 #include <QString>
+#include <QDir>
 #include "ProjectsView.hpp"
 
 int main(int argc, char *argv[])
@@ -11,7 +12,8 @@ int main(int argc, char *argv[])
     View widok;
 
     SimpleActionsView *v;
-    QString filestore = QString::fromUtf8("storage.dat");
+    QString filestore = QDir::homePath()
+                      + QString::fromUtf8("/.config/GetThingsDone/storage.dat");
 
     ModelStorage storage(filestore);
     storage.setSettings(Settings::getInstance());
