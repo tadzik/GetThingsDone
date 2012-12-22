@@ -1,7 +1,5 @@
 #include "SimpleActionsModel.hpp"
 
-#include <QDebug>
-
 int
 SimpleActionsModel::rowCount(const QModelIndex&)
 const
@@ -60,12 +58,6 @@ SimpleActionsModel::addNewElement(QString& t)
 void SimpleActionsModel::loadContents(QDataStream& in)
 {
     in >> this->entries_;
-
-    qDebug() << this->entries_.count() << "elements";
-
-    for (int i = 0; i < this->entries_.count(); i++) {
-        qDebug() << "Element " << i << ":" << this->entries_[i];
-    }
 }
 
 void SimpleActionsModel::saveContents(QDataStream &out)

@@ -10,8 +10,6 @@ void SwipeDetector::mousePressEvent(QMouseEvent *e)
 void SwipeDetector::mouseReleaseEvent(QMouseEvent *e)
 {
     QPoint p2 = e->globalPos();
-    // assume horizontal swipe
-    qDebug() << "possible horizontal swipe";
 
     int y = p2.y() - from_.y();
     int x = p2.x() - from_.x();

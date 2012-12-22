@@ -2,7 +2,6 @@
 
 #include <QVBoxLayout>
 #include <QStandardItemModel>
-#include <QDebug>
 
 SettingsDialog::SettingsDialog(QWidget *parent) : QDialog(parent)
 {
@@ -32,7 +31,6 @@ SettingsDialog::SettingsDialog(QWidget *parent) : QDialog(parent)
     }
     selector_->setModel(model);
     int minutes = settings_->get("pomodoro-time").toInt();
-    qDebug() << "pomodoro-time is" << minutes;
     selector_->setCurrentIndex((minutes / 5) - 1); // _should_ work...
 
     timeout_ = new QMaemo5ValueButton("Pomodoro timeout", this);
@@ -53,9 +51,7 @@ void SettingsDialog::finishedSlot()
 {
 #ifdef Q_WS_MAEMO_5
     int idx = static_cast<QMaemo5ListPickSelector*>(timeout_->pickSelector())->currentIndex();
-    qDebug() << "selected index is" << idx;
     int minutes = (idx + 1) * 5;
-    qDebug() << "setting pomodoro-time to " <<
         QString("%1").arg(minutes);
     settings_->set("pomodoro-time", QString("%1").arg(minutes));
 #endif
