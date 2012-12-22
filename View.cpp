@@ -70,7 +70,7 @@ void View::addNewItemSlot()
 }
 
 void View::settingsDialog() {
-    SettingsDialog dialog;
+    SettingsDialog dialog(this);
     dialog.exec();
 }
 

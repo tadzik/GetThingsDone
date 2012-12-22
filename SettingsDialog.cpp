@@ -3,7 +3,7 @@
 #include <QVBoxLayout>
 #include <QCheckBox>
 
-SettingsDialog::SettingsDialog(QObject *)
+SettingsDialog::SettingsDialog(QWidget *parent) : QDialog(parent)
 {
     settings_ = Settings::getInstance();
 

@@ -7,7 +7,7 @@
 class SettingsDialog : public QDialog {
     Q_OBJECT;
 public:
-    SettingsDialog(QObject *p = NULL);
+    SettingsDialog(QWidget *p = NULL);
 private:
     Settings *settings_;
 private slots:
