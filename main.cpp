@@ -17,14 +17,14 @@ int main(int argc, char *argv[])
 
     SimpleActionsModel *m;
 
-    v = widok.addCategory(QString::fromUtf8("Next Actions"));
-    m = new SimpleActionsModel(v);
-    v->setModel(m);
+    v = new SimpleActionsView(QString::fromUtf8("Next Actions"), &widok);
+    widok.addCategory(v);
+    m = new SimpleActionsModel(v, v);
     storage.addModel(m);
 
-    v = widok.addCategory(QString::fromUtf8("Projects"));
-    m = new SimpleActionsModel(v);
-    v->setModel(m);
+    v = new SimpleActionsView(QString::fromUtf8("Projects"), &widok);
+    widok.addCategory(v);
+    m = new SimpleActionsModel(v, v);
     storage.addModel(m);
 
     storage.loadAll();

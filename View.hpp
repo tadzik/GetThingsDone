@@ -14,7 +14,7 @@ class View : public QMainWindow {
     Q_OBJECT;
 public:
     View(QWidget *parent = NULL);
-    SimpleActionsView* addCategory(const QString& name);
+    void addCategory(SimpleActionsView*);
 private:
     QVBoxLayout      *vbox_;
     QPushButton      *addNewButton_;

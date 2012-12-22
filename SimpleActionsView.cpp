@@ -17,7 +17,7 @@ SimpleActionsView::SimpleActionsView(const QString& name, QWidget *parent) : QLi
             SIGNAL(horizontalSwipe(int, const QPoint&, const QPoint&)),
             this, SLOT(horizontalSwipeSlot(int, const QPoint&, const QPoint&)));
 
-    Q_UNUSED(name);
+    name_ = name;
 }
 
 void SimpleActionsView::resizeEvent(QResizeEvent *)

@@ -6,12 +6,16 @@
 #include <QList>
 #include <QString>
 #include <QDataStream>
+#include "SimpleActionsView.hpp"
 
 class SimpleActionsModel : public QAbstractTableModel {
     Q_OBJECT;
 public:
-    SimpleActionsModel(QObject *parent = NULL)
-        : QAbstractTableModel(parent) {}
+    SimpleActionsModel(SimpleActionsView *v, QObject *parent = NULL)
+        : QAbstractTableModel(parent)
+    {
+        v->setModel(this);
+    }
 
     int rowCount(const QModelIndex&) const;
     int columnCount(const QModelIndex&) const;

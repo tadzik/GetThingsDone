@@ -13,6 +13,7 @@ public:
     SimpleActionsView(const QString& name, QWidget *p = NULL);
     bool EventFilter(QObject *, QEvent *);
     void newItemDialog();
+    const QString& name() { return name_; }
 private slots:
     void markDone(QModelIndex&);
     void horizontalSwipeSlot(int, const QPoint&, const QPoint&);
@@ -22,6 +23,7 @@ signals:
     void swipeLeft();
 
 private:
+    QString name_;
     SwipeDetector swipeDetector_; // handles mousePressEvent and mouseReleaseEvent
     void mousePressEvent(QMouseEvent *e) {
         swipeDetector_.mousePressEvent(e);

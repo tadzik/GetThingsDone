@@ -32,14 +32,12 @@ View::View(QWidget *parent) : QMainWindow(parent)
 #endif
 }
 
-SimpleActionsView*
-View::addCategory(const QString& name)
+void
+View::addCategory(SimpleActionsView *v)
 {
-    SimpleActionsView *v = new SimpleActionsView(name, this);
     connect(v, SIGNAL(swipeRight()),   this, SLOT(swipeRightSlot()));
     connect(v, SIGNAL(swipeLeft()), this, SLOT(swipeLeftSlot()));
-    tabbedView_->addTab(v, name);
-    return v;
+    tabbedView_->addTab(v, v->name());
 }
 
 void View::setupMenu()
