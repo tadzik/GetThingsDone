@@ -12,8 +12,10 @@ int main(int argc, char *argv[])
     View widok;
 
     SimpleActionsView *v;
+    QDir d;
+    d.mkpath(QDir::homePath() + QString("/.config/GetThingsDone/"));
     QString filestore = QDir::homePath()
-                      + QString::fromUtf8("/.config/GetThingsDone/storage.dat");
+                      + QString("/.config/GetThingsDone/storage.dat");
 
     ModelStorage storage(filestore);
     storage.setSettings(Settings::getInstance());
