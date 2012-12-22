@@ -2,8 +2,9 @@
 #define _ALARM_HELPER_HPP
 
 class AlarmHelper {
-    void setAlarm(int timeout,
-                  const char* message = "Pomodoro timeout");
+public:
+    static void setAlarm(int timeout,
+                         const char* message = "Pomodoro timeout");
 };
 
 #endif

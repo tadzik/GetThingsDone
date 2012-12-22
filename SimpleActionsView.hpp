@@ -14,7 +14,7 @@ public:
     bool EventFilter(QObject *, QEvent *);
     void newItemDialog();
     const QString& name() { return name_; }
-private slots:
+protected slots:
     virtual void itemSwiped(QModelIndex&);
     void horizontalSwipeSlot(int, const QPoint&, const QPoint&);
 

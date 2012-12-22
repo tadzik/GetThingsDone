@@ -3,6 +3,7 @@
 #include "Settings.hpp"
 #include <QApplication>
 #include <QString>
+#include "ProjectsView.hpp"
 
 int main(int argc, char *argv[])
 {
@@ -22,7 +23,7 @@ int main(int argc, char *argv[])
     m = new SimpleActionsModel(v, v);
     storage.addModel(m);
 
-    v = new SimpleActionsView(QString::fromUtf8("Projects"), &widok);
+    v = new ProjectsView(QString::fromUtf8("Projects"), &widok);
     widok.addCategory(v);
     m = new SimpleActionsModel(v, v);
     storage.addModel(m);

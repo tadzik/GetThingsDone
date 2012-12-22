@@ -12,7 +12,7 @@ QMAKE_LINK = clang++
 QMAKE_POST_LINK=strip $(TARGET)
 
 maemo5 {
-    #QT += maemo5
+    QT += maemo5
     QMAKE_CXX = g++
     QMAKE_LINK = g++
     QMAKE_LIBS += -lalarm
@@ -26,6 +26,8 @@ HEADERS += SimpleActionsModel.hpp \
            Settings.hpp \
            SettingsDialog.hpp \
            AlarmHelper.hpp \
+           ProjectsView.hpp \
+           ProjectActions.hpp \
            View.hpp
 SOURCES += main.cpp \
            SimpleActionsModel.cpp \
@@ -35,4 +37,6 @@ SOURCES += main.cpp \
            Settings.cpp \
            SettingsDialog.cpp \
            AlarmHelper.cpp \
+           ProjectsView.cpp \
+           ProjectActions.cpp \
            View.cpp
