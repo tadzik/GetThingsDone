@@ -1,12 +1,12 @@
 #include "AlarmHelper.hpp"
 
+#include <QDebug>
+
 #ifdef Q_WS_MAEMO_5
     #include <alarmd/libalarm.h>
 #endif
 
-#include <QDebug>
-
-void AlarmHelper::setAlarm(int timeout, const QString& message)
+void AlarmHelper::setAlarm(int timeout, const char *message)
 {
     qDebug() << "Setting alarm to ring in" << timeout << "seconds";
 
@@ -17,7 +17,7 @@ void AlarmHelper::setAlarm(int timeout, const QString& message)
 
     eve = alarm_event_create();
     alarm_event_set_alarm_appid(eve, "GetThingsDone");
-    alarm_event_set_message(eve, message.constData());
+    alarm_event_set_message(eve, message);
 
     eve->alarm_time = time(0) + timeout;
 
