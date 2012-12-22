@@ -25,7 +25,7 @@ void SimpleActionsView::resizeEvent(QResizeEvent *)
     swipeDetector_.setThreshold(qMin(this->width(), this->height()) / 5);
 }
 
-void SimpleActionsView::markDone(QModelIndex& idx)
+void SimpleActionsView::itemSwiped(QModelIndex& idx)
 {
     SimpleActionsModel *m = static_cast<SimpleActionsModel*>(this->model());
 
@@ -74,7 +74,7 @@ SimpleActionsView::horizontalSwipeSlot(int direction,
             if (from_idx == to_idx) {
                 qDebug () << "swipe right on the same element, removing"
                     << to_idx.row();
-                this->markDone(to_idx);
+                this->itemSwiped(to_idx);
             }
         } else {
             emit(swipeRight());

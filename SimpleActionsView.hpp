@@ -15,7 +15,7 @@ public:
     void newItemDialog();
     const QString& name() { return name_; }
 private slots:
-    void markDone(QModelIndex&);
+    virtual void itemSwiped(QModelIndex&);
     void horizontalSwipeSlot(int, const QPoint&, const QPoint&);
 
 signals:
