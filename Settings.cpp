@@ -7,7 +7,8 @@ Settings* Settings::getInstance()
     static Settings instance;
 
     //default values
-    instance.set("pomodoro-time", "25");
+    if (instance.get("pomodoro-time") == "")
+        instance.set("pomodoro-time", "25");
 
     return &instance;
 }
