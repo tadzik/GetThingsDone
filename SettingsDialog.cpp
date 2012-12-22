@@ -21,6 +21,12 @@ SettingsDialog::SettingsDialog(QObject *)
     vbox->addWidget(confirmDone);
 
     setWindowTitle("GetThingsDone settings");
+
+#ifdef Q_WS_MAEMO_5
+    setAttribute(Qt::WA_Maemo5AutoOrientation,      true);
+    setAttribute(Qt::WA_Maemo5LandscapeOrientation, false);
+    setAttribute(Qt::WA_Maemo5PortraitOrientation,  false);
+#endif
 }
 
 void SettingsDialog::confirmDoneSlot(int state)
