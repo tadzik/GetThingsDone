@@ -93,7 +93,7 @@ void View::aboutDialog()
         "with an emphasis of not getting in your way too much, "
         "rather than making you waste more time on managing a "
         "ToDo list than on actually doing stuff.\n\n"
-        "If you get in impression that I failed in the attempt, "
+        "If you get an impression that I failed at the attempt, "
         "please contact me at tadeusz.sosnierz@onet.pl");
 }
 
