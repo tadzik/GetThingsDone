@@ -7,7 +7,6 @@
 SettingsDialog::SettingsDialog(QWidget *parent) : QDialog(parent)
 {
     setWindowTitle("GetThingsDone settings");
-    setAttribute(Qt::WA_DeleteOnClose);
 
     settings_ = Settings::getInstance();
 

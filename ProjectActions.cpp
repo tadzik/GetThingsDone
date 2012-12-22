@@ -20,8 +20,6 @@ ProjectActions::ProjectActions(QString& title, QWidget *p) : QDialog(p)
     hbox->addWidget(alrm);
 
     result_ = NOTHING;
-
-    setAttribute(Qt::WA_DeleteOnClose);
 }
 
 void ProjectActions::doneClicked()
