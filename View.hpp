@@ -14,7 +14,6 @@ class View : public QMainWindow {
     Q_OBJECT;
 public:
     View(QWidget *parent = NULL);
-    void NYI(); // XXX REMOVEME
     SimpleActionsView* addCategory(const QString& name);
 private:
     QVBoxLayout      *vbox_;

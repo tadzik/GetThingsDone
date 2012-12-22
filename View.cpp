@@ -4,6 +4,7 @@
 #include <QMenu>
 #include <QMessageBox>
 #include <QDebug>
+#include "SettingsDialog.hpp"
 
 View::View(QWidget *parent) : QMainWindow(parent)
 {
@@ -70,20 +71,32 @@ void View::addNewItemSlot()
     }
 }
 
-void View::settingsDialog() { this->NYI(); }
-void View::helpDialog()     { this->NYI(); }
-void View::aboutDialog()    { this->NYI(); }
+void View::settingsDialog() {
+    SettingsDialog dialog;
+    dialog.exec();
+}
 
-void View::NYI()
+void View::helpDialog()
 {
-    QMessageBox msg;
-#ifdef Q_WS_MAEMO_5
-    msg.setAttribute(Qt::WA_Maemo5AutoOrientation,      true);
-    msg.setAttribute(Qt::WA_Maemo5LandscapeOrientation, false);
-    msg.setAttribute(Qt::WA_Maemo5PortraitOrientation,  false);
-#endif
-    msg.setText("NYI");
-    msg.exec();
+    QMessageBox::about(
+        this, "Usage manual",
+        "Use the 'Add new item' button to add a new entry in the current"
+        " category. To remove an item, hold your finger on it and swipe "
+        "right. You can look through categories by pressing their labels"
+        " on top of the screen, or by swiping your finger horizontally "
+        "in the free space below entries (if any).");
+}
+
+void View::aboutDialog()
+{
+    QMessageBox::about(
+        this, "About GetThingsDone",
+        "This program tries to help you organize your tasks, "
+        "with an emphasis of not getting in your way too much, "
+        "rather than making you waste more time on managing a "
+        "ToDo list than on actually doing stuff.\n\n"
+        "If you get in impression that I failed in the attempt, "
+        "please contact me at tadeusz.sosnierz@onet.pl");
 }
 
 void View::swipeRightSlot()

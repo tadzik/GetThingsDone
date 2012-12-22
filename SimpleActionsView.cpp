@@ -1,8 +1,10 @@
 #include "SimpleActionsView.hpp"
 #include "SimpleActionsModel.hpp"
+#include "Settings.hpp"
 #include <QModelIndex>
 #include <QMouseEvent>
 #include <QInputDialog>
+#include <QMessageBox>
 
 #include <QDebug>
 
@@ -26,6 +28,23 @@ void SimpleActionsView::resizeEvent(QResizeEvent *)
 void SimpleActionsView::markDone(QModelIndex& idx)
 {
     SimpleActionsModel *m = static_cast<SimpleActionsModel*>(this->model());
+
+    if (Settings::getInstance()->get("confirm-removal") != "") {
+        QString item = m->data(idx, Qt::DisplayRole).toString();
+        QString question = QString("Are you sure you want to remove %1?")
+            .arg(item);
+
+        QMessageBox::StandardButton result;
+
+        result = QMessageBox::question(
+            this, "Confirm item removal", question,
+            QMessageBox::Yes | QMessageBox::No
+        );
+
+        if (result != QMessageBox::Yes)
+            return;
+    }
+
     m->markElementDone(idx);
 }
 

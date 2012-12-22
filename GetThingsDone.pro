@@ -7,17 +7,32 @@ TARGET =
 DEPENDPATH += .
 INCLUDEPATH += .
 QMAKE_CXX = clang++
+QMAKE_CXXFLAGS += -Wextra #-ggdb
 QMAKE_LINK = clang++
+QMAKE_POST_LINK=strip $(TARGET)
+
+maemo5 {
+    #QT += maemo5
+    QMAKE_CXX = g++
+    QMAKE_LINK = g++
+    QMAKE_LIBS += -lalarm
+}
 
 # Input
 HEADERS += SimpleActionsModel.hpp \
            SimpleActionsView.hpp \
            SwipeDetector.hpp \
            ModelStorage.hpp \
+           Settings.hpp \
+           SettingsDialog.hpp \
+           AlarmHelper.hpp \
            View.hpp
 SOURCES += main.cpp \
            SimpleActionsModel.cpp \
            SimpleActionsView.cpp \
            SwipeDetector.cpp \
            ModelStorage.cpp \
+           Settings.cpp \
+           SettingsDialog.cpp \
+           AlarmHelper.cpp \
            View.cpp

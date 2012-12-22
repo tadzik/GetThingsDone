@@ -11,6 +11,8 @@ void ModelStorage::loadAll()
     file.open(QIODevice::ReadOnly);
     QDataStream in(&file);
 
+    settings_->loadContents(in);
+
     QList<SimpleActionsModel*>::iterator it;
     for (it = models_.begin(); it != models_.end(); it++) {
         (*it)->loadContents(in);
@@ -26,6 +28,8 @@ void ModelStorage::saveAll()
     file.open(QIODevice::WriteOnly);
     QDataStream out(&file);
 
+    settings_->saveContents(out);
+
     QList<SimpleActionsModel*>::iterator it;
     for (it = models_.begin(); it != models_.end(); it++) {
         (*it)->saveContents(out);
@@ -38,6 +42,12 @@ void ModelStorage::addModel(SimpleActionsModel *m)
 {
     models_.append(m);
     connect(m, SIGNAL(notifyChanged()), this, SLOT(modelChanged()));
+}
+
+void ModelStorage::setSettings(Settings *s)
+{
+    settings_ = s;
+    connect(s, SIGNAL(notifyChanged()), this, SLOT(modelChanged()));
 }
 
 void ModelStorage::modelChanged()

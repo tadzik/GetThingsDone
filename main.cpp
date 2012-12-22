@@ -1,5 +1,6 @@
 #include "View.hpp"
 #include "ModelStorage.hpp"
+#include "Settings.hpp"
 #include <QApplication>
 #include <QString>
 
@@ -12,8 +13,9 @@ int main(int argc, char *argv[])
     QString filestore = QString::fromUtf8("storage.dat");
 
     ModelStorage storage(filestore);
-    SimpleActionsModel *m;
+    storage.setSettings(Settings::getInstance());
 
+    SimpleActionsModel *m;
 
     v = widok.addCategory(QString::fromUtf8("Next Actions"));
     m = new SimpleActionsModel(v);
