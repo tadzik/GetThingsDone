@@ -8,6 +8,8 @@
 
 View::View(QWidget *parent) : QMainWindow(parent)
 {
+    setWindowTitle("GetThingsDone");
+
     QFrame *frame = new QFrame(this);
 
     vbox_         = new QVBoxLayout();
