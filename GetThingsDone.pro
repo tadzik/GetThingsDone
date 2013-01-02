@@ -22,23 +22,21 @@ maemo5 {
 HEADERS += SimpleActionsModel.hpp \
            SimpleActionsView.hpp \
            SwipeDetector.hpp \
-           ModelStorage.hpp \
+           Model.hpp \
            Settings.hpp \
            SettingsDialog.hpp \
            AlarmHelper.hpp \
            ProjectsView.hpp \
            ProjectActions.hpp \
-           Model.hpp \
            View.hpp
 SOURCES += main.cpp \
            SimpleActionsModel.cpp \
            SimpleActionsView.cpp \
            SwipeDetector.cpp \
-           ModelStorage.cpp \
+           Model.cpp \
            Settings.cpp \
            SettingsDialog.cpp \
            AlarmHelper.cpp \
            ProjectsView.cpp \
            ProjectActions.cpp \
-           Model.cpp \
            View.cpp

@@ -1,24 +1,56 @@
 #include "Model.hpp"
-#include "Settings.hpp"
-#include "ProjectsView.hpp"
+#include <QFile>
 
-Model::Model(View *view, ModelStorage *storage) : view_(view),
-                                                  storage_(storage)
+void Model::loadAll()
 {
-    SimpleActionsView *v;
-    storage->setSettings(Settings::getInstance());
+    QFile file(filename_);
 
-    SimpleActionsModel *m;
+    if (!file.exists())
+        return;
 
-    v = new SimpleActionsView(QString::fromUtf8("Next Actions"), view_);
-    view_->addCategory(v);
-    m = new SimpleActionsModel(v, v);
-    storage->addModel(m);
+    file.open(QIODevice::ReadOnly);
+    QDataStream in(&file);
 
-    v = new ProjectsView(QString::fromUtf8("Projects"), view_);
-    view_->addCategory(v);
-    m = new SimpleActionsModel(v, v);
-    storage->addModel(m);
+    settings_->loadContents(in);
 
-    storage->loadAll();
+    QList<SimpleActionsModel*>::iterator it;
+    for (it = models_.begin(); it != models_.end(); it++) {
+        (*it)->loadContents(in);
+    }
+
+    file.close();
+}
+
+void Model::saveAll()
+{
+    QFile file(filename_);
+
+    file.open(QIODevice::WriteOnly);
+    QDataStream out(&file);
+
+    settings_->saveContents(out);
+
+    QList<SimpleActionsModel*>::iterator it;
+    for (it = models_.begin(); it != models_.end(); it++) {
+        (*it)->saveContents(out);
+    }
+
+    file.close();
+}
+
+void Model::addModel(SimpleActionsModel *m)
+{
+    models_.append(m);
+    connect(m, SIGNAL(notifyChanged()), this, SLOT(modelChanged()));
+}
+
+void Model::setSettings(Settings *s)
+{
+    settings_ = s;
+    connect(s, SIGNAL(notifyChanged()), this, SLOT(modelChanged()));
+}
+
+void Model::modelChanged()
+{
+    this->saveAll();
 }

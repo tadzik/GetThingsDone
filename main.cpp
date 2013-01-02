@@ -14,9 +14,7 @@ int main(int argc, char *argv[])
     QString filestore = QDir::homePath()
                       + QString("/.config/GetThingsDone/storage.dat");
 
-    ModelStorage storage(filestore);
-
-    Model model(&widok, &storage);
+    Model storage(filestore, &widok);
 
     widok.show();
     return app.exec();
