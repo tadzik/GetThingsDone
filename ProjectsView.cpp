@@ -10,7 +10,7 @@
 #endif
 
 
-void ProjectsView::itemSwiped(QModelIndex& idx)
+void ProjectsView::itemSwipedRight(QModelIndex& idx)
 {
     SimpleActionsModel *m = static_cast<SimpleActionsModel*>(this->model());
     QString name = m->data(idx, Qt::DisplayRole).toString();
@@ -18,7 +18,7 @@ void ProjectsView::itemSwiped(QModelIndex& idx)
     dialog.exec();
 
     if (dialog.result() == MARK_DONE) {
-        return SimpleActionsView::itemSwiped(idx);
+        return SimpleActionsView::itemSwipedRight(idx);
     }
     if (dialog.result() == POMODORO) {
         int timeout = Settings::getInstance()

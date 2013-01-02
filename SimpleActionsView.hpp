@@ -15,7 +15,8 @@ public:
     void newItemDialog();
     const QString& name() { return name_; }
 protected slots:
-    virtual void itemSwiped(QModelIndex&);
+    virtual void itemSwipedLeft(QModelIndex&);
+    virtual void itemSwipedRight(QModelIndex&);
     void horizontalSwipeSlot(int, const QPoint&, const QPoint&);
 
 signals:

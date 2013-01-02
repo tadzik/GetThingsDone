@@ -22,6 +22,8 @@ public:
     QVariant data(const QModelIndex&, int r = Qt::DisplayRole) const;
     void markElementDone(QModelIndex&);
     void addNewElement(QString&);
+    bool setData(const QModelIndex&, const QVariant&,
+                 int role = Qt::EditRole);
     bool removeRows(int, int, const QModelIndex& p = QModelIndex());
     bool insertRow(int row, const QModelIndex& p = QModelIndex());
 

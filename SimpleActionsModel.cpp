@@ -14,6 +14,23 @@ const
     return 1;
 }
 
+bool
+SimpleActionsModel::setData(const QModelIndex& index,
+                            const QVariant& val, int role)
+{
+    if (index.column() == 0) {
+        if (index.row() <= this->entries_.count()) {
+            this->entries_[index.row()] = val.toString();
+            emit(notifyChanged());
+            return true;
+        }
+    }
+
+    return false;
+
+    Q_UNUSED(role);
+}
+
 QVariant
 SimpleActionsModel::data(const QModelIndex &index, int role) const
 {

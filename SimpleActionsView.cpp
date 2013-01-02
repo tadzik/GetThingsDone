@@ -25,7 +25,19 @@ void SimpleActionsView::resizeEvent(QResizeEvent *)
     swipeDetector_.setThreshold(qMin(this->width(), this->height()) / 5);
 }
 
-void SimpleActionsView::itemSwiped(QModelIndex& idx)
+void SimpleActionsView::itemSwipedLeft(QModelIndex& idx)
+{
+    bool ok;
+    SimpleActionsModel *m = static_cast<SimpleActionsModel*>(this->model());
+    QString text = QInputDialog::getText(
+        this, "Edit item", "Description:", QLineEdit::Normal, m->data(idx, Qt::DisplayRole).toString(), &ok
+    );
+    if (ok && !text.isEmpty()) {
+        m->setData(idx, QVariant(text));
+    }
+}
+
+void SimpleActionsView::itemSwipedRight(QModelIndex& idx)
 {
     SimpleActionsModel *m = static_cast<SimpleActionsModel*>(this->model());
 
@@ -74,13 +86,24 @@ SimpleActionsView::horizontalSwipeSlot(int direction,
             if (from_idx == to_idx) {
                 qDebug () << "swipe right on the same element, removing"
                     << to_idx.row();
-                this->itemSwiped(to_idx);
+                this->itemSwipedRight(to_idx);
             }
         } else {
             emit(swipeRight());
         }
     } else {
-        emit(swipeLeft());
+        qDebug () << "swipe left on qlistview";
+        QModelIndex from_idx = this->indexAt(mapFromGlobal(from));
+        if (from_idx.isValid()) {
+            QModelIndex to_idx   = this->indexAt(mapFromGlobal(to));
+            if (from_idx == to_idx) {
+                qDebug () << "swipe right on the same element"
+                    << to_idx.row();
+                this->itemSwipedLeft(to_idx);
+            }
+        } else {
+            emit(swipeLeft());
+        }
     }
     
 }

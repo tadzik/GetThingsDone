@@ -9,7 +9,7 @@ public:
     ProjectsView(const QString& name, QWidget *p = NULL)
         : SimpleActionsView(name, p) {}
 
-    void itemSwiped(QModelIndex&);
+    void itemSwipedRight(QModelIndex&);
 };
 
 #endif
