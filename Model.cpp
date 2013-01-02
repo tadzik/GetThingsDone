@@ -4,7 +4,6 @@
 
 void Model::loadAll()
 {
-    // XXX
     SimpleActionsView *v;
     setSettings(Settings::getInstance());
 
@@ -19,7 +18,11 @@ void Model::loadAll()
     view_->addCategory(v);
     m = new SimpleActionsModel(v, v);
     addModel(m);
-    // XXX
+
+    v = new ProjectsView(QString::fromUtf8("Someday/Maybe"), view_);
+    view_->addCategory(v);
+    m = new SimpleActionsModel(v, v);
+    addModel(m);
 
     QFile file(filename_);
 
