@@ -28,6 +28,7 @@ HEADERS += SimpleActionsModel.hpp \
            AlarmHelper.hpp \
            ProjectsView.hpp \
            ProjectActions.hpp \
+           Model.hpp \
            View.hpp
 SOURCES += main.cpp \
            SimpleActionsModel.cpp \
@@ -39,4 +40,5 @@ SOURCES += main.cpp \
            AlarmHelper.cpp \
            ProjectsView.cpp \
            ProjectActions.cpp \
+           Model.cpp \
            View.cpp
