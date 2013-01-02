@@ -1,8 +1,26 @@
 #include "Model.hpp"
+#include "ProjectsView.hpp"
 #include <QFile>
 
 void Model::loadAll()
 {
+    // XXX
+    SimpleActionsView *v;
+    setSettings(Settings::getInstance());
+
+    SimpleActionsModel *m;
+
+    v = new SimpleActionsView(QString::fromUtf8("Next Actions"), view_);
+    view_->addCategory(v);
+    m = new SimpleActionsModel(v, v);
+    addModel(m);
+
+    v = new ProjectsView(QString::fromUtf8("Projects"), view_);
+    view_->addCategory(v);
+    m = new SimpleActionsModel(v, v);
+    addModel(m);
+    // XXX
+
     QFile file(filename_);
 
     if (!file.exists())
