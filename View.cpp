@@ -83,7 +83,8 @@ void View::helpDialog()
         this, "Usage manual",
         "Use the 'Add new item' button to add a new entry in the current"
         " category. To remove an item, hold your finger on it and swipe "
-        "right. You can look through categories by pressing their labels"
+        "right. Swipe left to edit an item. You can look through "
+        "categories by pressing their labels"
         " on top of the screen, or by swiping your finger horizontally "
         "in the free space below entries (if any).");
 }
