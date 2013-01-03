@@ -9,17 +9,17 @@ void Model::loadAll()
 
     SimpleActionsModel *m;
 
-    v = new SimpleActionsView(QString::fromUtf8("Next Actions"), view_);
+    v = new SimpleActionsView(QString::fromUtf8("Next &Actions"), view_);
     view_->addCategory(v);
     m = new SimpleActionsModel(v, v);
     addModel(m);
 
-    v = new ProjectsView(QString::fromUtf8("Projects"), view_);
+    v = new ProjectsView(QString::fromUtf8("&Projects"), view_);
     view_->addCategory(v);
     m = new SimpleActionsModel(v, v);
     addModel(m);
 
-    v = new ProjectsView(QString::fromUtf8("Someday/Maybe"), view_);
+    v = new SimpleActionsView(QString::fromUtf8("&Someday/Maybe"),view_);
     view_->addCategory(v);
     m = new SimpleActionsModel(v, v);
     addModel(m);

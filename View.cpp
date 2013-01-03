@@ -13,8 +13,9 @@ View::View(QWidget *parent) : QMainWindow(parent)
     QFrame *frame = new QFrame(this);
 
     vbox_         = new QVBoxLayout();
-    addNewButton_ = new QPushButton("Add new item", this);
+    addNewButton_ = new QPushButton("Add &new item", this);
     tabbedView_   = new QTabWidget(this);
+    tabbedView_->setUsesScrollButtons(false);
 
     connect(addNewButton_, SIGNAL(clicked()), this, SLOT(addNewItemSlot()));
 
