@@ -28,7 +28,7 @@ void AlarmHelper::setAlarm(int timeout, const char *message)
     act->flags |= ALARM_ACTION_TYPE_NOP;
 
     /* Add snooze button action */
-    /* FUTURE ME: FOR FUCK'S SAKE NEVER REMOVE THIS
+    /* FUTURE ME: FOR GODS' SAKE NEVER REMOVE THIS
      * FOR SOME REASON IT MAKES THE ALARM RECUR INDEFINITELY
      * WITH NO WAY TO TURN IT OFF BESIDES USING alarmclient
      * YOU HAVE BEEN WARNED. NEVER. EVER. REMOVE. THIS */
